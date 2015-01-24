@@ -13,27 +13,21 @@ public class CANTestCommand extends Command {
 	
 	Joystick stick;
 
-    public CANTestCommand(Joystick stick) {
-    	super("TestCommand");
+    public CANTestCommand() {
+    	super("CANTestCommand");
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.TEST_SUBSYSTEM);
-        this.stick = stick;
+        requires(Robot.LIFT_SYSTEM);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("Testing...");
+    	System.out.println("Testing CAN...");
+    	Robot.LIFT_SYSTEM.setSpeed(.5);
     }
 
     double z;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	z = stick.getX();
-    	if (Math.abs(z) < .1) {
-    		z = 0;
-    	}
-    	System.out.println(z);
-    	Robot.TEST_SUBSYSTEM.setSpeed(z);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,8 +37,8 @@ public class CANTestCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("Stopping testing...");
-    	Robot.TEST_SUBSYSTEM.setSpeed(0);
+    	System.out.println("Stopping CAN testing...");
+    	Robot.LIFT_SYSTEM.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same

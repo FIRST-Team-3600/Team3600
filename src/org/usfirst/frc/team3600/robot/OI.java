@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import org.usfirst.frc.team3600.robot.commands.CANTestCommand;
 import org.usfirst.frc.team3600.robot.commands.TestCommand;
 
 /**
@@ -50,6 +51,7 @@ public class OI {
 	
 	public OI() {
 		lA31.whileHeld(new TestCommand(logitechA3));
+		lA32.whileActive(new CANTestCommand());
 	}
 	
     //// CREATING BUTTONS

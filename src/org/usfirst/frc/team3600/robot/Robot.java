@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3600.robot.subsystems.DriveSystem;
+import org.usfirst.frc.team3600.robot.subsystems.LiftSystem;
 import org.usfirst.frc.team3600.robot.subsystems.TestSubsystem;
 
 /**
@@ -21,11 +22,9 @@ import org.usfirst.frc.team3600.robot.subsystems.TestSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final TestSubsystem TEST_SUBSYSTEM = new TestSubsystem();
+	public static final LiftSystem LIFT_SYSTEM = new LiftSystem();
 	public static final DriveSystem DRIVE_SYSTEM = new DriveSystem();
-	public Gyro rioGyro;
 	public static OI oi;
-
-	public static SmartDashboard board = new SmartDashboard();
 	
     Command autonomousCommand;
 

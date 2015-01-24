@@ -12,18 +12,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LiftSystem extends Subsystem {
     
-    CANTalon motor1 = new CANTalon(RobotMap.LIFT_ONE);
-    CANTalon motor2 = new CANTalon(RobotMap.LIFT_TWO);
+    CANTalon motor1 = new CANTalon(RobotMap.CAN_LIFT_ONE);
+    CANTalon motor2 = new CANTalon(RobotMap.CAN_LIFT_TWO);
     
     public void initDefaultCommand() {
-    	motor1.changeControlMode(CANTalon.ControlMode.Position);
+    	System.out.println("Setting CAN Control Modes...");
+    	motor1.changeControlMode(CANTalon.ControlMode.PercentVbus);
     	motor2.changeControlMode(CANTalon.ControlMode.Follower);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void test() {
-    	motor1.setPosition(10);
+    public void setSpeed(double d) {
+    	motor1.set(d);
+    	motor2.set(motor1.getDeviceID());
     }
     
 }

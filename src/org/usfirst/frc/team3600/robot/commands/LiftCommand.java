@@ -6,22 +6,21 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3600.robot.Robot;
 
-/**
- *
- */
+// This command will actually control the lift system. Not completed.
+
 public class LiftCommand extends Command {
 	
 	Joystick stick;
 
     public LiftCommand() {
-    	super("CANTestCommand");
+    	super("LiftCommand");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.LIFT_SYSTEM);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("Testing CAN...");
+    	System.out.println("Initializing lift command...");
     	Robot.LIFT_SYSTEM.setSpeed(.5);
     }
 
@@ -37,7 +36,7 @@ public class LiftCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("Stopping CAN testing...");
+    	System.out.println("Stopping lifting...");
     	Robot.LIFT_SYSTEM.setSpeed(0);
     }
 

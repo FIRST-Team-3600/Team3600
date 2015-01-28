@@ -6,12 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3600.robot.Robot;
 
-/**
- *
+/* This is for testing CAN.
+ * Not to be used for actual robot operation.
  */
+
 public class CANTestCommand extends Command {
-	
-	Joystick stick;
 
     public CANTestCommand() {
     	super("CANTestCommand");

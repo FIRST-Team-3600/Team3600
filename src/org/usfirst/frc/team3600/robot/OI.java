@@ -15,8 +15,13 @@ import org.usfirst.frc.team3600.robot.commands.TestCommand;
 public class OI {
 	
 	static final int XBOX = 1;
-	static final int LOGITECH_ATTACK3 = 0;
+	static final int LOGITECH_ATTACK_3 = 0;
 	static final int LOGITECH_EXTREME_3D_PRO = 0;
+	
+	// The naming scheme of these buttons is:
+	// [acronym of name of controller][name of button]
+	// so x[box]Start
+	// or l[ogitech]A[ttack]31
 	
 	//XBOX
 	public Joystick xbox = new Joystick(XBOX);
@@ -32,7 +37,7 @@ public class OI {
 	Button xR3 = new JoystickButton(xbox, 10);
 	//END XBOX
 	//LOGITECH ATTACK 3
-	public Joystick logitechA3 = new Joystick(LOGITECH_ATTACK3);
+	public Joystick logitechA3 = new Joystick(LOGITECH_ATTACK_3);
 	Button lA31 = new JoystickButton(logitechA3, 1);
 	Button lA32 = new JoystickButton(logitechA3, 2);
 	Button lA33 = new JoystickButton(logitechA3, 3);

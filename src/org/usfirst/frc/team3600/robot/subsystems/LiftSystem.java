@@ -7,9 +7,8 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-/**
- *
- */
+// This is the system controlling the conveyer belt lifty thing.
+
 public class LiftSystem extends Subsystem {
     
     CANTalon motor1 = new CANTalon(RobotMap.CAN_LIFT_ONE);

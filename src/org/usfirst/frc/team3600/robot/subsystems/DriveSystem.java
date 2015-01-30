@@ -24,7 +24,7 @@ public class DriveSystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new DriveCommand(Robot.oi.logitechA3));
+    	setDefaultCommand(new DriveCommand(Robot.oi.xbox));
     }
     
     public void drive(double x, double y, double r) {

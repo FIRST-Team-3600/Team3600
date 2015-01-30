@@ -32,10 +32,11 @@ public class DriveCommand extends Command {
     double r;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double x = stick.getX();
-    	double y = stick.getY();
+    	double x = stick.getRawAxis(0);
+    	double y = stick.getRawAxis(1);
+    	double r = stick.getRawAxis(4);
     	
-    	Robot.DRIVE_SYSTEM.drive(x, y, /*stick.getZ()*/0);
+    	Robot.DRIVE_SYSTEM.drive(x, y, r);
     }
 
     // Make this return true when this Command no longer needs to run execute()

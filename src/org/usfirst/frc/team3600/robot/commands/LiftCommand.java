@@ -12,21 +12,24 @@ public class LiftCommand extends Command {
 	
 	Joystick stick;
 
-    public LiftCommand() {
+    public LiftCommand(Joystick stick) {
     	super("LiftCommand");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.LIFT_SYSTEM);
+        this.stick = stick;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("Initializing lift command...");
-    	Robot.LIFT_SYSTEM.setSpeed(.5);
+    	
     }
 
-    double z;
+    double speed;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	speed = stick.getRawAxis(2);
+    	Robot.LIFT_SYSTEM.setSpeed(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

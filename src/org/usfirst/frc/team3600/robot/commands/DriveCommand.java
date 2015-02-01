@@ -14,12 +14,14 @@ import org.usfirst.frc.team3600.robot.Robot;
 public class DriveCommand extends Command {
 
 	Joystick stick;
+	Joystick stick2;
 	
-    public DriveCommand(Joystick stick) {
+    public DriveCommand(Joystick stick, Joystick stick2) {
     	super("DriveCommand");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.DRIVE_SYSTEM);
         this.stick = stick;
+        this.stick2 = stick2;
     }
 
     // Called just before this Command runs the first time
@@ -33,10 +35,10 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double x = stick.getRawAxis(0);
-    	double y = stick.getRawAxis(1);
-    	double r = stick.getRawAxis(4);
+    	double y = -stick.getRawAxis(1);
+    	double r = stick2.getRawAxis(0);
     	
-    	Robot.DRIVE_SYSTEM.drive(x, y, r);
+    	Robot.DRIVE_SYSTEM.drive(x, r, y);
     }
 
     // Make this return true when this Command no longer needs to run execute()

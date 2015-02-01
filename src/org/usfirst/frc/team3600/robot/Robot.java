@@ -19,6 +19,23 @@ import org.usfirst.frc.team3600.robot.subsystems.TestSubsystem;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
+/*
+ * ROBOCOP
+ *                ____
+ *               |____|
+ *               {____}
+ *           ____\____/____
+ *          /              \
+ *          |   |      |   |
+ *          |   |      |   |
+ *          /   |______|   \
+ *          \---|      |\---
+ *              |   |  |
+ *              |   |  |
+ *              |___|__|_
+ *              |____\___\
+ */
 public class Robot extends IterativeRobot {
 
 	public static final TestSubsystem TEST_SUBSYSTEM = new TestSubsystem();

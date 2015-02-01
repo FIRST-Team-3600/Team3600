@@ -14,8 +14,9 @@ import org.usfirst.frc.team3600.robot.commands.TestCommand;
  */
 public class OI {
 	
-	static final int XBOX = 1;
+	static final int XBOX = 0;
 	static final int LOGITECH_ATTACK_3 = 0;
+	static final int LOGITECH_ATTACK_3_2 = 1;
 	static final int LOGITECH_EXTREME_3D_PRO = 0;
 	
 	// The naming scheme of these buttons is:
@@ -49,9 +50,23 @@ public class OI {
 	Button lA39 = new JoystickButton(logitechA3, 9);
 	Button lA310 = new JoystickButton(logitechA3, 10);
 	Button lA311 = new JoystickButton(logitechA3, 11);
+	public Joystick logitechA32 = new Joystick(LOGITECH_ATTACK_3_2);
 	//END LOGITECH ATTACK 3
 	//LOGITECH EXTREME 3D PRO
 	public Joystick logitechE3D = new Joystick(LOGITECH_EXTREME_3D_PRO);
+	Button lE3D1 = new JoystickButton(logitechE3D, 1);
+	Button lE3D2 = new JoystickButton(logitechE3D, 2);
+	Button lE3D3 = new JoystickButton(logitechE3D, 3);
+	Button lE3D4 = new JoystickButton(logitechE3D, 4);
+	Button lE3D5 = new JoystickButton(logitechE3D, 5);
+	Button lE3D6 = new JoystickButton(logitechE3D, 6);
+	Button lE3D7 = new JoystickButton(logitechE3D, 7);
+	Button lE3D8 = new JoystickButton(logitechE3D, 8);
+	Button lE3D9 = new JoystickButton(logitechE3D, 9);
+	Button lE3D10 = new JoystickButton(logitechE3D, 10);
+	Button lE3D11 = new JoystickButton(logitechE3D, 11);
+	Button lE3D12 = new JoystickButton(logitechE3D, 12);
+	//END LOGITECH EXTREME 3D PRO
 	
 	
 	public OI() {

@@ -14,14 +14,18 @@ import org.usfirst.frc.team3600.robot.Robot;
 public class DriveCommand extends Command {
 
 	Joystick stick;
-	Joystick stick2;
+	//Joystick stick2;
 	
-    public DriveCommand(Joystick stick, Joystick stick2) {
+	double deadzoneX = .15;
+	double deadzoneY = .15;
+	double deadzoneR = .1;
+	
+    public DriveCommand(Joystick stick/*, Joystick stick2*/) {
     	super("DriveCommand");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.DRIVE_SYSTEM);
         this.stick = stick;
-        this.stick2 = stick2;
+        //this.stick2 = stick2;
     }
 
     // Called just before this Command runs the first time
@@ -36,7 +40,11 @@ public class DriveCommand extends Command {
     protected void execute() {
     	double x = stick.getRawAxis(0);
     	double y = -stick.getRawAxis(1);
-    	double r = stick2.getRawAxis(0);
+    	double r = -stick.getRawAxis(4);
+    	
+    	x = Math.abs(x) < deadzoneX ? 0 : x;
+    	y = Math.abs(y) < deadzoneY ? 0 : y;
+    	r = Math.abs(r) < deadzoneR ? 0 : r;
     	
     	Robot.DRIVE_SYSTEM.drive(x, r, y);
     }

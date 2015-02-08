@@ -20,7 +20,6 @@ public class LiftSystem extends Subsystem {
     	motor1.changeControlMode(CANTalon.ControlMode.PercentVbus);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new LiftCommand(Robot.oi.logitechA32));
     }
     
     public void setSpeed(double d) {

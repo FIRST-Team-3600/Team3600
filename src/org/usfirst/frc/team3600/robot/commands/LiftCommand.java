@@ -22,13 +22,13 @@ public class LiftCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("Initializing lift command...");
-    	
     }
 
     double speed;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	speed = stick.getRawAxis(2);
+    	System.out.println("Speed: " + speed);
     	Robot.LIFT_SYSTEM.setSpeed(speed);
     }
 

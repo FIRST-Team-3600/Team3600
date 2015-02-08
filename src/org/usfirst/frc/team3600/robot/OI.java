@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team3600.robot.commands.CANTestCommand;
+import org.usfirst.frc.team3600.robot.commands.LiftCommand;
 import org.usfirst.frc.team3600.robot.commands.TestCommand;
 
 /**
@@ -14,7 +15,7 @@ import org.usfirst.frc.team3600.robot.commands.TestCommand;
  */
 public class OI {
 	
-	static final int XBOX = 0;
+	static final int XBOX = 1;
 	static final int LOGITECH_ATTACK_3 = 0;
 	static final int LOGITECH_ATTACK_3_2 = 1;
 	static final int LOGITECH_EXTREME_3D_PRO = 0;
@@ -51,6 +52,7 @@ public class OI {
 	Button lA310 = new JoystickButton(logitechA3, 10);
 	Button lA311 = new JoystickButton(logitechA3, 11);
 	public Joystick logitechA32 = new Joystick(LOGITECH_ATTACK_3_2);
+	Button lA21 = new JoystickButton(logitechA32, 1);
 	//END LOGITECH ATTACK 3
 	//LOGITECH EXTREME 3D PRO
 	public Joystick logitechE3D = new Joystick(LOGITECH_EXTREME_3D_PRO);
@@ -70,8 +72,7 @@ public class OI {
 	
 	
 	public OI() {
-		lA31.whileHeld(new TestCommand(logitechA3));
-		lA32.whileActive(new CANTestCommand());
+		lA31.whileHeld(new LiftCommand(logitechA3));
 	}
 	
     //// CREATING BUTTONS

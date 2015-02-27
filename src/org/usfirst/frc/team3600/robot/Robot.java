@@ -1,13 +1,14 @@
 
 package org.usfirst.frc.team3600.robot;
 
-import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team3600.robot.commands.AutoGroup;
 import org.usfirst.frc.team3600.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team3600.robot.subsystems.LiftSystem;
 import org.usfirst.frc.team3600.robot.subsystems.TestSubsystem;
@@ -38,22 +39,37 @@ import org.usfirst.frc.team3600.robot.subsystems.TestSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final TestSubsystem TEST_SUBSYSTEM = new TestSubsystem();
-	public static final LiftSystem LIFT_SYSTEM = new LiftSystem();
-	public static final DriveSystem DRIVE_SYSTEM = new DriveSystem();
+	public static TestSubsystem TEST_SUBSYSTEM;
+	public static LiftSystem LIFT_SYSTEM;
+	public static DriveSystem DRIVE_SYSTEM;
 	public static OI oi;
 	
+	CameraServer camera;
+	
     Command autonomousCommand;
+    
+    //AnalogSensor ultraDist;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	camera = CameraServer.getInstance();
+    	camera.setQuality(50);
+    	camera.startAutomaticCapture("cam0");
+    	
+    	TEST_SUBSYSTEM = new TestSubsystem();
+    	LIFT_SYSTEM = new LiftSystem();
+    	DRIVE_SYSTEM = new DriveSystem();
 		oi = new OI();
-        // instantiate the command used for the autonomous period
-        //autonomousCommand = new ExampleCommand();
 		
+//		ultraDist = new AnalogSensor(new AnalogInput(0));
+        // instantiate the command used for the autonomous period
+        autonomousCommand = new AutoGroup();
+		
+        SmartDashboard.putData(DRIVE_SYSTEM);
+        SmartDashboard.putData(LIFT_SYSTEM);
     }
 	
 	public void disabledPeriodic() {
@@ -62,7 +78,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        autonomousCommand.start();
     }
 
     /**
@@ -70,6 +86,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        log();
     }
 
     public void teleopInit() {
@@ -77,7 +94,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        autonomousCommand.cancel();
     }
 
     /**
@@ -91,9 +108,14 @@ public class Robot extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
+    //int count = 0;
     public void teleopPeriodic() {
-    	
-    	//System.out.println("Gyro: " + rioGyro.getAngle());
+    	/*count++;
+    	if (count >= 50) {
+    		System.out.println("UltraVolt: " + ultraDist.sensor.getVoltage());
+    		System.out.println("UltraDist: " + ultraDist.getSonicDist());
+    		count = 0;
+    	}*/
         Scheduler.getInstance().run();
     }
     
@@ -102,5 +124,10 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    private static void log() {
+    	DRIVE_SYSTEM.log();
+    	LIFT_SYSTEM.log();
     }
 }

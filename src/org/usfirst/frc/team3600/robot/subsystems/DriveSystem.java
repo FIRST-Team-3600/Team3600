@@ -8,6 +8,7 @@ import org.usfirst.frc.team3600.robot.commands.DriveCommand;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -19,6 +20,10 @@ public class DriveSystem extends Subsystem {
     Talon bLeft = new Talon(RobotMap.BACK_LEFT);
     Talon bRight = new Talon(RobotMap.BACK_RIGHT);
     
+    double x = 0;
+    double y = 0;
+    double r = 0;
+    
     RobotDrive driver = new RobotDrive(fLeft, bLeft, fRight, bRight);
 
     public void initDefaultCommand() {
@@ -28,7 +33,17 @@ public class DriveSystem extends Subsystem {
     }
     
     public void drive(double x, double y, double r) {
+    	this.x = x;
+    	this.y = y;
+    	this.r = r;
     	driver.mecanumDrive_Cartesian(x, y, r, 0);
+    }
+    
+    @SuppressWarnings("deprecation")
+	public void log() {
+    	SmartDashboard.putDouble("x", x);
+    	SmartDashboard.putDouble("y", y);
+    	SmartDashboard.putDouble("r", r);
     }
     
 }

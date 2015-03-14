@@ -6,8 +6,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team3600.robot.commands.AutoGroup;
 import org.usfirst.frc.team3600.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team3600.robot.subsystems.LiftSystem;
@@ -48,6 +46,9 @@ public class Robot extends IterativeRobot {
 	
     Command autonomousCommand;
     
+    //public SendableChooser autoSwitch;
+    //public boolean autoEnabled = true;
+    
     //AnalogSensor ultraDist;
 
     /**
@@ -68,8 +69,13 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutoGroup();
 		
-        SmartDashboard.putData(DRIVE_SYSTEM);
-        SmartDashboard.putData(LIFT_SYSTEM);
+        //SmartDashboard.putData(DRIVE_SYSTEM);
+        //SmartDashboard.putData(LIFT_SYSTEM);
+        
+        /*autoSwitch = new SendableChooser();
+        autoSwitch.addObject("On", true);
+        autoSwitch.addDefault("Off", false);*/
+        
     }
 	
 	public void disabledPeriodic() {
@@ -78,7 +84,9 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        autonomousCommand.start();
+    	//if ((boolean) autoSwitch.getSelected()) {
+    		autonomousCommand.start();
+    	//}
     }
 
     /**
@@ -86,7 +94,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        log();
+        //log();
     }
 
     public void teleopInit() {
@@ -117,6 +125,7 @@ public class Robot extends IterativeRobot {
     		count = 0;
     	}*/
         Scheduler.getInstance().run();
+        //log();
     }
     
     /**
@@ -126,8 +135,8 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
     
-    private static void log() {
+    /*private static void log() {
     	DRIVE_SYSTEM.log();
     	LIFT_SYSTEM.log();
-    }
+    }*/
 }

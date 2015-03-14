@@ -6,7 +6,6 @@ import org.usfirst.frc.team3600.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 // This is the system controlling the conveyer belt lifty thing.
 
@@ -30,10 +29,10 @@ public class LiftSystem extends Subsystem {
     	motor2.set(d);
     }
     
-    @SuppressWarnings("deprecation")
+    /*@SuppressWarnings("deprecation")
 	public void log() {
     	SmartDashboard.putDouble("LiftSpeed", d);
-    }
+    }*/
     
 }
 

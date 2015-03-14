@@ -14,7 +14,7 @@ public class AutoLiftCommand extends Command {
     	super("AutoLiftCommand");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.LIFT_SYSTEM);
-        this.setTimeout(1);
+        this.setTimeout(2);
     }
 
     // Called just before this Command runs the first time

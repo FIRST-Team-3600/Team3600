@@ -36,9 +36,11 @@ public class DriveCommand extends Command {
     double r;
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double x = stick.getRawAxis(0);
-    	double y = -stick.getRawAxis(1);
-    	double r = -stick.getRawAxis(4);
+    	x = stick.getRawAxis(0);
+    	y = -stick.getRawAxis(1);
+    	r = -stick.getRawAxis(4);
+    	
+    	double sY = stick.getRawAxis(1);
     	
     	x = Math.abs(x) < deadzoneX ? 0 : x;
     	y = Math.abs(y) < deadzoneY ? 0 : y;
@@ -50,7 +52,7 @@ public class DriveCommand extends Command {
     		r = r > 0 ? r*r : r*-r;
     	}
     	
-    	//System.out.println(x + y + r);
+    	System.out.println("Stick: " + sY + " Y: " + y);
     	Robot.DRIVE_SYSTEM.drive(x, r, y);
     }
 
@@ -62,6 +64,9 @@ public class DriveCommand extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.DRIVE_SYSTEM.drive(0, 0, 0);
+    	x = 0;
+    	y = 0;
+    	r = 0;
     }
 
     // Called when another command which requires one or more of the same

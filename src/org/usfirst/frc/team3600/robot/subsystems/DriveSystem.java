@@ -6,9 +6,9 @@ import org.usfirst.frc.team3600.robot.RobotMap;
 import org.usfirst.frc.team3600.robot.commands.DriveCommand;
 
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,11 +24,16 @@ public class DriveSystem extends Subsystem {
     double y = 0;
     double r = 0;
     
+    Sendable xSendable;
+    Sendable ySendable;
+    Sendable rSendable;
+    
     RobotDrive driver = new RobotDrive(fLeft, bLeft, fRight, bRight);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	
     	setDefaultCommand(new DriveCommand(Robot.oi.xbox/*, Robot.oi.logitechA32*/));
     }
     
@@ -39,12 +44,14 @@ public class DriveSystem extends Subsystem {
     	driver.mecanumDrive_Cartesian(x, y, r, 0);
     }
     
-    @SuppressWarnings("deprecation")
+    
+    
+    /*@SuppressWarnings("deprecation")
 	public void log() {
     	SmartDashboard.putDouble("x", x);
     	SmartDashboard.putDouble("y", y);
     	SmartDashboard.putDouble("r", r);
-    }
+    }*/
     
 }
 
